@@ -1,0 +1,127 @@
+:root {
+  color-scheme: dark;
+
+  /* Colors */
+  --color-bg: #05070a;
+  --color-bg-raised: #0a0f14;
+  --color-surface: #10171d;
+  --color-surface-raised: #151e25;
+  --color-border: rgba(210, 230, 224, 0.16);
+  --color-border-strong: rgba(210, 230, 224, 0.32);
+  --color-text: #f4f7f2;
+  --color-text-secondary: #b7c5c0;
+  --color-text-tertiary: #83928d;
+  --color-accent-primary: #3dff9a;
+  --color-accent-primary-soft: rgba(61, 255, 154, 0.12);
+  --color-accent-secondary: #8ea7c4;
+  --color-accent-secondary-soft: rgba(142, 167, 196, 0.09);
+  --color-success: #3dff9a;
+  --color-warning: #ffd166;
+  --color-error: #ff7084;
+
+  /* Hero robot sprite */
+  --robot-antenna: #38e8ff;
+  --robot-eye: #3dff9a;
+  --robot-body: #d6ece4;
+  --robot-shade: #82aa9e;
+  --robot-metal: #78968e;
+  --robot-accent: #aacdc2;
+  --robot-visor: #06120e;
+
+  /* Glow and shadows */
+  --glow-primary: 0 0 24px rgba(61, 255, 154, 0.16);
+  --glow-secondary: 0 0 20px rgba(142, 167, 196, 0.09);
+  --glow-focus: 0 0 0 3px rgba(142, 167, 196, 0.22);
+  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 16px 40px rgba(0, 0, 0, 0.42);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.52);
+
+  /* Typography */
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --text-xs: clamp(0.62rem, 0.58rem + 0.12vw, 0.7rem);
+  --text-sm: clamp(0.78rem, 0.74rem + 0.16vw, 0.9rem);
+  --text-base: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+  --text-lg: clamp(1.15rem, 1rem + 0.55vw, 1.35rem);
+  --text-xl: clamp(1.6rem, 1.25rem + 1.35vw, 2.8rem);
+  --text-hero: clamp(3rem, 7.5vw, 5.6rem);
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-heavy: 800;
+  --leading-tight: 1.08;
+  --leading-body: 1.75;
+  --leading-loose: 1.9;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0.01em;
+  --tracking-wide: 0.08em;
+
+  /* Spacing: 4px scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --container: 1120px;
+  --container-reading: 72ch;
+
+  /* Radius, borders and z-index layers */
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+  --border-width: 1px;
+  --z-content: 1;
+  --z-decoration: 0;
+  --z-nav: 200;
+  --z-overlay: 150;
+  --z-cursor: 0;
+  --z-noise: 9990;
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --duration-reveal: 800ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-expressive: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Compatibility aliases used by the existing component CSS */
+  --bg: var(--color-bg);
+  --bg2: var(--color-bg-raised);
+  --bg3: var(--color-surface);
+  --surface: var(--color-surface-raised);
+  --border: var(--color-border);
+  --borderh: var(--color-border-strong);
+  --purple: var(--color-accent-primary);
+  --plt: var(--color-accent-secondary);
+  --pd: var(--color-accent-primary-soft);
+  --acc: var(--color-accent-secondary);
+  --text: var(--color-text);
+  --body: var(--color-text-secondary);
+  --muted: var(--color-text-secondary);
+  --dim: var(--color-text-tertiary);
+  --ease: var(--ease-standard);
+}
+
+/*
+  Breakpoints are documented here because CSS custom properties cannot be
+  used directly in media query conditions.
+  --breakpoint-sm: 360px
+  --breakpoint-md: 480px
+  --breakpoint-lg: 640px
+  --breakpoint-xl: 768px
+  --breakpoint-2xl: 900px
+  --breakpoint-3xl: 1080px
+*/

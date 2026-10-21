@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robot sprite preview</title>
+  <style>
+    :root {
+      --color-bg: #05070a;
+      --color-surface: #10171d;
+      --color-border: rgba(210, 230, 224, .22);
+      --color-text: #f4f7f2;
+      --color-text-secondary: #b7c5c0;
+      --color-accent-primary: #3dff9a;
+      --color-accent-secondary: #8ea7c4;
+      --font-mono: "IBM Plex Mono", Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      padding: 2rem;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-mono);
+    }
+    h1 { margin: 0 0 .5rem; font-size: 1.2rem; }
+    .intro { margin: 0 0 1.5rem; color: var(--color-text-secondary); font-size: .8rem; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(220px, 1fr)); gap: 1rem; }
+    .card {
+      padding: 1rem;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+    }
+    .card h2 { margin: 0 0 .75rem; font-size: .85rem; color: var(--color-accent-secondary); }
+    canvas {
+      display: block;
+      width: min(100%, 320px);
+      height: auto;
+      margin: 0 auto 1rem;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+    }
+    pre {
+      margin: 0;
+      overflow: auto;
+      color: var(--color-text-secondary);
+      font-size: .62rem;
+      line-height: 1.35;
+    }
+    .legend { margin-top: 1.5rem; color: var(--color-text-secondary); font-size: .72rem; }
+    .legend b { color: var(--color-accent-primary); }
+    @media (max-width: 820px) {
+      body { padding: 1rem; }
+      .grid { grid-template-columns: 1fr; }
+      .card { max-width: 420px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Robot sprite preview — 16 × 16</h1>
+  <p class="intro">Cada opção usa uma metade esquerda de 8 colunas. O lado direito é gerado por espelhamento.</p>
+  <main class="grid" id="sprites"></main>
+  <p class="legend"><b>X</b> corpo · <b>E</b> olhos · <b>B</b> contorno · <b>P</b> detalhe · <b>.</b> transparente · <b>A</b> antena assimétrica</p>
+  <script>
+    const COLORS = {
+      background: '#05070a',
+      body: '#3dff9a',
+      eye: '#f4f7f2',
+      outline: '#8ea7c4',
+      detail: '#8ea7c4',
+      antenna: '#3dff9a'
+    };
+
+    const sprites = [
+      {
+        name: '1 — Clássico terminal',
+        half: [
+          '........',
+          '........',
+          '...X....',
+          '..BBB...',
+          '.BXXXXXE',
+          '.BXXXX..',
+          '.BXXXXXE',
+          '.BBBB...',
+          '..BXX...',
+          '.BXXXX..',
+          '.BXXP...',
+          '.BXXXX..',
+          '..B..B..',
+          '..B..B..',
+          '.BB..BB.',
+          '........'
+        ],
+        antenna: [{ x: 7, y: 1 }, { x: 7, y: 2 }]
+      },
+      {
+        name: '2 — Explorador',
+        half: [
+          '........',
+          '........',
+          '........',
+          '...X....',
+          '..BBB...',
+          '.BXXXXXE',
+          '.BXXXX..',
+          '.BXXXXXE',
+          '.BBBB...',
+          '..BXX...',
+          '.BXPX...',
+          '.BXXXX..',
+          '..BXX...',
+          '.B...B..',
+          'BB...BB.',
+          '........'
+        ],
+        antenna: [{ x: 6, y: 1 }, { x: 5, y: 2 }, { x: 6, y: 2 }]
+      },
+      {
+        name: '3 — Mascote arredondado',
+        half: [
+          '........',
+          '........',
+          '...X....',
+          '..BBB...',
+          '.BXXX...',
+          'BXXXXXE',
+          'BXXXX...',
+          'BXXPX...',
+          'BXXXX...',
+          '.BXXX...',
+          '..BBB...',
+          '..BXX...',
+          '.B...B..',
+          'BB...B..',
+          '........',
+          '........'
+        ],
+        antenna: [{ x: 7, y: 1 }, { x: 7, y: 2 }]
+      }
+    ];
+
+    function mirror(half) {
+      return half.map(row => {
+        if (row.length !== 8) throw new Error(`Half row must have 8 columns: ${row}`);
+        return row + row.split('').reverse().join('');
+      });
+    }
+
+    function draw(canvas, matrix, antenna) {
+      const scale = 20;
+      const context = canvas.getContext('2d');
+      canvas.width = 16 * scale;
+      canvas.height = 16 * scale;
+      context.fillStyle = COLORS.background;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      matrix.forEach((row, y) => row.split('').forEach((cell, x) => {
+        const color = {
+          X: COLORS.body,
+          E: COLORS.eye,
+          B: COLORS.outline,
+          P: COLORS.detail
+        }[cell];
+        if (!color) return;
+        context.fillStyle = color;
+        context.fillRect(x * scale, y * scale, scale, scale);
+      }));
+      context.fillStyle = COLORS.antenna;
+      antenna.forEach(({ x, y }) => context.fillRect(x * scale, y * scale, scale, scale));
+    }
+
+    const root = document.getElementById('sprites');
+    sprites.forEach(sprite => {
+      const matrix = mirror(sprite.half);
+      const card = document.createElement('article');
+      card.className = 'card';
+      const title = document.createElement('h2');
+      title.textContent = sprite.name;
+      const canvas = document.createElement('canvas');
+      draw(canvas, matrix, sprite.antenna);
+      const code = document.createElement('pre');
+      code.textContent = matrix.join('\n');
+      card.append(title, canvas, code);
+      root.append(card);
+    });
+  </script>
+</body>
+</html>

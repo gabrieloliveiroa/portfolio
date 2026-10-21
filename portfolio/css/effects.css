@@ -1,0 +1,73 @@
+/* Decorative layers stay behind content and never receive pointer input. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-decoration);
+  background-image:
+    linear-gradient(rgba(142, 167, 196, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(142, 167, 196, 0.018) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 82%);
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 82%);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-noise);
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+html[data-effects="off"] body::before,
+html[data-effects="off"] body::after,
+html[data-effects="off"] #hero::before,
+html[data-effects="off"] #hero::after,
+html[data-effects="off"] #cg,
+html[data-effects="off"] .hmesh,
+html[data-effects="off"] .starfield,
+html[data-effects="off"] .robot-ring,
+html[data-effects="off"] .robot-orbiter,
+html[data-effects="off"] .section-parallax,
+html[data-effects="off"] .repo-cursor{display:none!important}
+
+#hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-decoration);
+  opacity: 0.035;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(142, 167, 196, 0.05) 4px,
+    transparent 5px
+  );
+}
+
+/* Reduced motion is intentionally centralized at the end of the cascade. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  #cg,
+  .hmesh-blob,
+  .robot-ring,
+  .robot-orbiter,
+  .starfield,
+  .avsc {
+    display: none !important;
+  }
+}

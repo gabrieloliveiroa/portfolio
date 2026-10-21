@@ -1,0 +1,14 @@
+.robot-bubble{position:absolute;right:calc(100% + 1rem);top:18%;width:max-content;max-width:210px;padding:.65rem .8rem;border:1px solid var(--color-accent-primary-soft);background:rgba(5,7,10,.9);color:var(--color-accent-primary);font:var(--text-xs)/1.45 var(--font-mono);opacity:0;transform:translateY(5px);transition:opacity var(--duration-fast),transform var(--duration-fast);pointer-events:none}
+.robot-bubble.is-visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.robot-bubble-close{position:absolute;right:.2rem;top:.1rem;border:0;background:transparent;color:var(--color-text-tertiary);font:1rem/1 var(--font-mono);cursor:pointer}
+.robot-bubble [data-robot-bubble-text]{display:block;padding-right:.75rem}
+.robot-companion{position:fixed;right:1rem;bottom:3.2rem;z-index:calc(var(--z-nav) - 1);display:grid;place-items:center;width:52px;height:62px;padding:0;border:1px solid var(--color-border);background:rgba(5,7,10,.9);opacity:0;transform:translateY(10px);transition:opacity var(--duration-normal),transform var(--duration-normal);cursor:pointer}
+.robot-companion.is-visible{opacity:1;transform:translateY(0)}
+.robot-companion canvas{width:36px;height:43px;image-rendering:pixelated}
+.robot-companion:focus-visible{outline:2px solid var(--color-accent-primary);outline-offset:3px}
+.robot-companion.is-bounce{animation:robotCompanionBounce .35s var(--ease-expressive)}
+.robot-tip{position:absolute;right:calc(100% + .55rem);bottom:0;width:190px;padding:.55rem .7rem;border:1px solid var(--color-accent-primary-soft);background:rgba(5,7,10,.95);color:var(--color-text-secondary);font:var(--text-xs)/1.4 var(--font-mono);text-align:left}
+@keyframes robotCompanionBounce{50%{transform:translateY(-9px)}}
+@media(max-width:640px){.robot-bubble{right:50%;top:calc(100% + 1rem);transform:translate(50%,5px)}.robot-bubble.is-visible{transform:translate(50%,0)}.robot-companion{display:none}}
+@media(prefers-reduced-motion:reduce){.robot-bubble,.robot-companion{transition:none}.robot-companion{display:none}}
+html[data-effects="off"] .robot-companion{display:none!important}

@@ -1,0 +1,167 @@
+/* HERO — dark aesthetic */
+    #hero{
+      min-height:100vh;display:flex;align-items:center;
+      padding:0 max(4rem,calc((100vw - 1280px) / 2 + 2rem));padding-top:6rem;overflow:hidden;
+      background:var(--color-bg);
+      position:relative;
+    }
+
+    /* Noise texture overlay via SVG data URI */
+    #hero::before{
+      content:'';position:absolute;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size:180px 180px;
+      opacity:.028;
+      pointer-events:none;z-index:var(--z-decoration);
+    }
+
+    /* Subtle accent blobs */
+    .hmesh{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:var(--z-decoration)}
+    .hmesh-blob{position:absolute;border-radius:50%;filter:blur(90px)}
+    .hb1{width:700px;height:700px;
+      background:radial-gradient(circle,var(--color-accent-secondary-soft) 0%,transparent 70%);
+      top:-180px;right:-120px;
+      animation:bDrift 20s ease-in-out infinite}
+    .hb2{width:500px;height:500px;
+      background:radial-gradient(circle,var(--color-accent-secondary-soft) 0%,transparent 70%);
+      bottom:-80px;left:-80px;
+      animation:bDrift 16s ease-in-out 4s infinite reverse}
+    .hb3{width:380px;height:380px;
+      background:radial-gradient(circle,rgba(61,255,154,.08) 0%,transparent 70%);
+      top:38%;left:52%;
+      animation:bDrift 12s ease-in-out 2s infinite}
+    @keyframes bDrift{
+      0%,100%{transform:translate(0,0) scale(1)}
+      33%{transform:translate(24px,-20px) scale(1.03)}
+      66%{transform:translate(-16px,16px) scale(.97)}
+    }
+
+    /* Horizontal light sweep */
+    .hbeam{
+      position:absolute;top:0;left:50%;width:1px;height:100%;
+      background:linear-gradient(180deg,transparent 0%,rgba(142,167,196,.04) 30%,rgba(142,167,196,.07) 50%,rgba(142,167,196,.04) 70%,transparent 100%);
+      transform:translateX(-50%);
+      z-index:var(--z-decoration);
+      pointer-events:none;
+    }
+
+    /* Bottom edge line */
+    .hero-runes{
+      position:absolute;bottom:0;left:0;right:0;height:1px;
+      background:linear-gradient(90deg,transparent 0%,rgba(142,167,196,.14) 30%,rgba(142,167,196,.20) 50%,rgba(142,167,196,.14) 70%,transparent 100%);
+      opacity:1;
+    }
+
+    .hc{position:relative;z-index:2;max-width:780px}
+    .hero-terminal{display:flex;align-items:center;gap:.55rem;margin-bottom:5rem;color:var(--color-text-tertiary);font-family:var(--font-mono);font-size:var(--text-sm);letter-spacing:.02em;min-height:1.4em;white-space:nowrap}
+    .terminal-prompt{color:var(--color-accent-primary)}
+    .terminal-output{color:var(--color-text);white-space:pre-wrap}
+    .terminal-cursor{width:.55em;height:1.1em;background:var(--color-accent-primary);animation:terminalBlink 1s steps(2,end) infinite}
+    @keyframes terminalBlink{50%{opacity:0}}
+
+    /* HERO PORTRAIT — sprite do robô em pixels */
+    .hero-portrait{position:absolute;right:max(4rem,calc((100vw - 1280px) / 2 + 2rem));top:calc(50% - 8rem);transform:translateY(-50%);z-index:3;display:flex;align-items:center;justify-content:center;width:clamp(190px,24vw,260px);aspect-ratio:16 / 19;pointer-events:auto}
+    .hero-portrait .portrait{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;transform:perspective(1200px) translateZ(0);transition:transform var(--duration-normal) var(--ease);will-change:transform}
+    .robot-canvas{display:block;width:auto;height:100%;aspect-ratio:16 / 19;image-rendering:pixelated;image-rendering:crisp-edges}
+    .robot-ring{position:absolute;inset:4%;border:1px solid var(--color-accent-secondary-soft);pointer-events:none;opacity:.45}
+    .robot-orbiter{position:absolute;width:6px;height:6px;right:7%;top:8%;background:var(--robot-antenna);box-shadow:0 0 10px var(--robot-antenna);animation:robotOrbit 7s linear infinite}
+    @keyframes robotOrbit{0%{transform:translate(0,0)}25%{transform:translate(-18px,16px)}50%{transform:translate(-4px,34px)}75%{transform:translate(14px,14px)}100%{transform:translate(0,0)}}
+    .robot-flash{animation:robotFlash .18s steps(2,end)}
+    @keyframes robotFlash{50%{filter:brightness(1.35)}}
+    html[data-effects="off"] .robot-ring,
+    html[data-effects="off"] .robot-orbiter{display:none!important}
+    .robot-scan{position:absolute;left:12%;right:12%;top:18%;height:2px;background:var(--robot-antenna);opacity:0;pointer-events:none;animation:robotScan .6s steps(4,end) forwards;box-shadow:0 0 0 1px var(--robot-antenna)}
+    @keyframes robotScan{0%{opacity:0;transform:translateY(0)}15%{opacity:.55}100%{opacity:0;transform:translateY(260px)}}
+    .hero-portrait:hover .portrait{transform:scale(1.03)}
+    .hero-portrait:active .portrait{transform:scale(.99)}
+    .pp-ripple{position:absolute;border-radius:50%;background:var(--color-accent-secondary-soft);transform:scale(0);pointer-events:none;animation:ripple var(--duration-reveal) var(--ease-out)}
+    @keyframes ripple{to{transform:scale(3);opacity:0}}
+
+    /* STARFIELD — apenas pontos brancos e estrelas cadentes */
+    .starfield{position:absolute;inset:0;z-index:var(--z-content);pointer-events:none;overflow:hidden}
+    .starfield .stars{position:absolute;inset:0;pointer-events:none}
+    .starfield .stars .star{position:absolute;border-radius:50%;background:var(--color-text);box-shadow:0 0 10px rgba(244,247,242,.82),0 0 18px rgba(244,247,242,.22);will-change:transform,opacity,box-shadow,filter;transform:translate(0,0);animation:floatStar var(--dur) ease-in-out infinite alternate,starTwinkle var(--twinkDur) ease-in-out var(--twinkDelay) infinite,starPulse var(--pulseDur) ease-in-out var(--pulseDelay) infinite;opacity:var(--op)}
+    @keyframes floatStar{from{transform:translate(0,0)}to{transform:translate(var(--tx),var(--ty))}}
+    @keyframes starTwinkle{0%,100%{opacity:calc(var(--op)*0.7)}50%{opacity:var(--op)}}
+    @keyframes starPulse{0%,100%{box-shadow:0 0 6px rgba(244,247,242,.58),0 0 12px rgba(244,247,242,.14);filter:brightness(1)}50%{box-shadow:0 0 16px var(--color-text),0 0 30px rgba(244,247,242,.55);filter:brightness(1.22)}}
+    /* Badge — glassmorphism on dark */
+    .hbadge{
+      display:inline-flex;align-items:center;gap:.55rem;
+      font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+      color:rgba(244,247,242,.88);
+      border:1px solid var(--color-accent-secondary-soft);
+      padding:.48rem 1.05rem;
+      background:var(--color-accent-secondary-soft);
+      backdrop-filter:blur(12px);
+      border-radius:var(--radius-pill);
+      margin-bottom:2rem;
+      opacity:0;animation:hIn var(--duration-reveal) .1s var(--ease) forwards;
+    }
+    .hbadge::before{content:'◈';color:rgba(61,255,154,.75)}
+
+    h1.hn{
+      font-family:var(--font-display);
+      font-size:var(--text-hero);font-weight:800;
+      line-height:1.02;letter-spacing:var(--tracking-tight);
+      color:var(--color-text);
+      margin-bottom:1.4rem;
+      opacity:0;animation:hIn var(--duration-reveal) var(--duration-normal) var(--ease) forwards;
+      text-transform:none;
+    }
+
+    /* Accent gradient text */
+    .grad{
+      display:block;
+      background:linear-gradient(125deg,var(--color-accent-primary) 0%,var(--color-accent-secondary) 45%,var(--color-text) 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+
+    .hdesc{
+      font-size:1.05rem;font-weight:400;
+      color:var(--color-text-secondary);
+      line-height:var(--leading-loose);max-width:56ch;margin-bottom:2.8rem;
+      opacity:0;animation:hIn var(--duration-reveal) var(--duration-slow) var(--ease) forwards;
+    }
+
+    .hctas{display:flex;gap:.9rem;flex-wrap:wrap;opacity:0;animation:hIn var(--duration-reveal) .55s var(--ease) forwards}
+
+    /* Primary CTA — white */
+    .btnp{
+      position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.8rem;
+      background:var(--color-text);color:var(--color-bg);
+      font-family:var(--font-sans);font-size:.88rem;letter-spacing:.005em;text-transform:none;text-decoration:none;
+      border:1px solid var(--color-border);border-radius:var(--radius-pill);cursor:pointer;overflow:hidden;
+      transition:transform var(--duration-fast) var(--ease),box-shadow var(--duration-normal) var(--ease),background var(--duration-normal) var(--ease),border-color var(--duration-normal) var(--ease),color var(--duration-normal) var(--ease),filter var(--duration-normal) ease;
+      font-weight:700;
+      box-shadow:none;
+    }
+    .btnp::before{
+      content:'';position:absolute;inset:0;      background:var(--color-accent-secondary-soft);
+      opacity:0;transition:opacity var(--duration-normal) ease;z-index:-1
+    }
+    .btnp:hover{
+      transform:translateY(-2px) scale(1.01);background:var(--color-text);border-color:var(--color-accent-primary);filter:none;
+      box-shadow:var(--glow-primary)
+    }
+    .btnp:hover::before{opacity:1}
+
+    /* Ghost CTA — glassmorphism */
+    .btng{
+      position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.8rem;
+      background:transparent;color:var(--color-text-secondary);
+      font-family:var(--font-sans);font-size:.88rem;letter-spacing:.005em;text-transform:none;text-decoration:none;
+      border:1px solid var(--color-border-strong);border-radius:var(--radius-pill);cursor:pointer;overflow:hidden;
+      transition:color var(--duration-normal) var(--ease),border-color var(--duration-normal) var(--ease),background var(--duration-normal) var(--ease),transform var(--duration-fast) var(--ease),box-shadow var(--duration-normal) var(--ease),filter var(--duration-normal) ease;
+      font-weight:600;box-shadow:none;
+    }
+    .btng::before{
+      content:'';position:absolute;inset:0;background:var(--color-accent-primary-soft);
+      opacity:0;transition:opacity var(--duration-normal) ease;z-index:-1
+    }
+    .btng:hover{
+      color:var(--color-text);border-color:var(--color-accent-primary);background:var(--color-accent-primary-soft);transform:translateY(-2px);filter:none;
+      box-shadow:var(--glow-primary)
+    }
+    .btng:hover::before{opacity:1}
+
+    @keyframes hIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}

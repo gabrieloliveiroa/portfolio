@@ -1,0 +1,168 @@
+/* LAPTOPS ENXUTOS — 769-1080px */
+    @media(max-width:1080px){
+      nav{padding:0.9rem 2rem}
+      #hero{padding-left:2rem;padding-right:2rem}
+      .hero-portrait{right:2.5rem;width:clamp(180px,23vw,230px)}
+      .hc{max-width:calc(100% - 260px)}
+    }
+    @media(max-width:900px){
+      .hero-portrait{right:1.5rem;width:clamp(165px,21vw,205px)}
+      .hc{max-width:calc(100% - 225px)}
+    }
+
+    /* TABLETS — 768px para cima */
+    @media(max-width:768px){
+      nav{padding:0.75rem 1.5rem;flex-wrap:wrap}
+      .nav-links{display:none;margin-right:0}
+      .nav-links a{font-size:0.7rem}
+      .hamburger-menu{display:flex}
+      h1.hn{font-size:clamp(2.2rem,5vw,3.8rem)}
+      .hbadge{font-size:.6rem;padding:.4rem .9rem}
+      .hdesc{font-size:.98rem}
+      #hero{padding:0 1.5rem;padding-top:5rem;min-height:100vh;min-height:100svh;overflow:hidden}
+      .hero-portrait{position:relative;right:auto;top:auto;transform:none;width:clamp(150px,32vw,220px);margin-top:2rem;flex:none}
+      .inner{padding:4rem 1.5rem}
+      .sgrid{grid-template-columns:1fr;grid-template-rows:none;gap:2rem}
+      .sbody{grid-column:auto;grid-row:auto}
+      .avbox{max-width:220px;margin:0 auto}
+      .ctgrid{grid-template-columns:1fr;gap:2.5rem}
+      .expitem{grid-template-columns:1fr;gap:.3rem}
+      .stit{font-size:clamp(1.6rem,4vw,2.2rem)}
+      .skillsgrid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+      .pgrid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+      footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.25rem;font-size:.8rem}
+    }
+    
+    /* SMARTPHONES GRANDES — até 640px */
+    @media(max-width:640px){
+      nav{padding:0.6rem 1rem}
+      .nav-logo-mono{width:32px;height:32px}
+      .nav-logo-mono span{font-size:11px}
+      .nav-logo-text{gap:2px}
+      .nav-logo-name{font-size:.9rem}
+      .nav-logo-sub{font-size:.5rem}
+      .nav-links{gap:.4rem;font-size:.65rem;display:none}
+      .nav-actions{gap:.8rem}
+      .hamburger-menu{display:flex}
+        .language-toggle{height:28px;padding:0 .5rem;font-size:.6rem}
+      h1.hn{font-size:clamp(2.75rem,13vw,4.5rem);line-height:.98;margin-bottom:1.25rem;text-align:center}
+      .hbadge{font-size:.55rem;padding:.35rem .8rem;margin-bottom:1.5rem;text-align:center}
+      .hdesc{font-size:clamp(.92rem,3.8vw,1rem);line-height:1.7;max-width:34ch;margin:0 auto 2.2rem;text-align:center}
+      .hctas{gap:.6rem;justify-content:center}
+      .btnp,.btng{padding:.75rem 1.4rem;font-size:.8rem}
+      #hero{padding:0 1rem;padding-top:4rem;display:flex;flex-direction:column;align-items:center;justify-content:center}
+      .hc{width:100%;max-width:100%;text-align:center}
+      .hero-terminal{justify-content:center;text-align:center;font-size:clamp(.64rem,2.8vw,.82rem);gap:.4rem;margin-bottom:4rem}
+      .hero-portrait{width:clamp(140px,38vw,200px);margin-top:1.75rem}
+      .inner{padding:3rem 1rem}
+      .sgrid{gap:1.5rem}
+      .avbox{max-width:180px}
+      .sbody p{font-size:.95rem}
+      .tagrow{gap:.4rem;margin-top:1.2rem}
+      .tag{font-size:.65rem;padding:.3rem .7rem}
+      .stit{font-size:clamp(1.3rem,3.5vw,1.8rem);margin-bottom:1.5rem}
+      .slbl{font-size:.6rem;gap:.5rem}
+      .slbl::before{width:20px}
+      .expitem{padding:2rem 0;gap:0}
+      .epper{font-size:.65rem}
+      .erole{font-size:1rem;margin-bottom:.2rem}
+      .eco{font-size:.85rem}
+      .edesc,.pdesc,.rds{font-size:.9rem}
+      .ctgrid{gap:1.5rem}
+      .skillsgrid{grid-template-columns:1fr}
+      .skillcard{padding:1.5rem}
+      .scat{font-size:.95rem;margin-bottom:.8rem}
+      .pgrid{grid-template-columns:1fr}
+      .pcard{padding:1.5rem}
+      .pname{font-size:1.1rem}
+      .pdesc{font-size:.9rem}
+      .rgrid{grid-template-columns:1fr}
+      footer{padding:1rem;gap:.4rem}
+      .ft{font-size:.75rem}
+    }
+    
+    /* SMARTPHONES PEQUENOS — até 480px */
+    @media(max-width:480px){
+      nav{padding:0.5rem 0.8rem;gap:.5rem}
+      .nav-logo-mono{width:28px;height:28px}
+      .nav-logo-mono span{font-size:10px}
+      .nav-logo-text{display:none}
+      .nav-links{gap:.3rem;font-size:.6rem;display:none}
+      .hamburger-menu{display:flex}
+      .language-toggle{height:24px;padding:0 .4rem;font-size:.55rem}
+      h1.hn{font-size:clamp(2.6rem,14vw,4rem);line-height:.98;margin-bottom:1.1rem}
+      .hbadge{font-size:.5rem;padding:.3rem .7rem;margin-bottom:1.2rem}
+      .hdesc{font-size:.92rem;line-height:1.65;max-width:31ch;margin:0 auto 1.8rem}
+      .hctas{gap:.5rem;flex-direction:column}
+      .btnp,.btng{width:100%;padding:.7rem 1.2rem;font-size:.75rem;justify-content:center}
+      #hero{padding:0 0.8rem;padding-top:4rem;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;min-height:100svh}
+      .hc{width:100%;max-width:100%;text-align:center}
+      .hero-portrait{width:clamp(132px,42vw,180px);margin-top:1.5rem}
+      .inner{padding:2.5rem 0.8rem}
+      .sgrid{gap:1.2rem}
+      .avbox{max-width:150px;border-radius:20px}
+      .sbody p{font-size:.9rem;line-height:1.8;margin-bottom:.8rem}
+      .tagrow{gap:.3rem;margin-top:1rem}
+      .tag{font-size:.6rem;padding:.25rem .6rem;border-radius:6px}
+      .stit{font-size:clamp(1.1rem,3vw,1.5rem);margin-bottom:1.2rem}
+      .slbl{font-size:.55rem;gap:.4rem}
+      .slbl::before{width:16px;height:1px}
+      .divider{opacity:.4}
+      .explist{border-top:none}
+      .expitem{padding:1.5rem 0;gap:0;border-bottom:1px solid var(--border)}
+      .epper{font-size:.6rem}
+      .erole{font-size:.95rem;margin-bottom:.15rem}
+      .eco{font-size:.8rem;margin-bottom:.6rem}
+      .edesc{font-size:.85rem;line-height:1.7}
+      .ctgrid{grid-template-columns:1fr;gap:1.2rem}
+      .cttag{font-size:.95rem;margin-bottom:2rem}
+      .skillsgrid{grid-template-columns:1fr}
+      .skillcard{padding:1.2rem;border-radius:16px}
+      .scat{font-size:.9rem;margin-bottom:.6rem}
+      .chips{gap:.3rem}
+      .chip{font-size:.6rem;padding:.25rem .6rem}
+      .pgrid{grid-template-columns:1fr}
+      .pcard{padding:1.2rem;border-radius:16px}
+      .picon{margin-bottom:.8rem}
+      .pname{font-size:1rem;margin-bottom:.4rem}
+      .pdesc{font-size:.85rem;line-height:var(--leading-body);margin-bottom:1rem}
+      .ptags{gap:.3rem}
+      .ptag{font-size:.6rem;padding:.22rem .55rem}
+      .rbar{flex-direction:column;gap:.8rem;margin-bottom:1rem}
+      .rbar .btng{width:100%}
+      .rgrid{grid-template-columns:1fr}
+      .rcard{padding:1.2rem;gap:.5rem;border-radius:12px}
+      .rhd{gap:.4rem}
+      .rico{font-size:.8rem}
+      .rnm{font-size:.95rem}
+      .rds{font-size:.8rem;line-height:1.6}
+      .rmeta{font-size:.6rem;gap:.8rem}
+      .rph{padding:2rem 1rem;font-size:.75rem}
+      footer{padding:0.8rem;gap:.3rem}
+      .ft{font-size:.7rem}
+    }
+
+    /* ULTRA PEQUENO — até 360px */
+    @media(max-width:360px){
+      .nav-logo-mono{width:24px;height:24px}
+      .nav-links{display:none}
+      .hamburger-menu{display:flex}
+      .nav-actions{gap:.6rem}
+      h1.hn{font-size:clamp(2.4rem,15vw,3.2rem);line-height:.98;text-align:center}
+      .hbadge{font-size:.48rem;padding:.25rem .65rem}
+      .hdesc{font-size:.88rem;line-height:1.6;text-align:center}
+      .hctas{flex-direction:column}
+      .btnp,.btng{width:100%;padding:.65rem 1rem;font-size:.75rem;justify-content:center}
+      #hero{display:flex;flex-direction:column;align-items:center;justify-content:center}
+      .hc{width:100%;text-align:center}
+      .hero-portrait{width:clamp(124px,44vw,160px);margin-top:1.25rem}
+      .inner{padding:2rem 0.6rem}
+      .avbox{max-width:120px}
+      .stit{font-size:1rem;margin-bottom:1rem;text-align:center}
+      .sbody p{font-size:.85rem;text-align:center}
+      .tag{font-size:.55rem;padding:.2rem .5rem}
+      .expitem{padding:1rem 0}
+      .skillcard{padding:1rem}
+      .pcard{padding:1rem}
+      footer{padding:0.6rem}
+    }
