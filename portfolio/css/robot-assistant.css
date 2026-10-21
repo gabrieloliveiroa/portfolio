@@ -9,6 +9,6 @@
 .robot-companion.is-bounce{animation:robotCompanionBounce .35s var(--ease-expressive)}
 .robot-tip{position:absolute;right:calc(100% + .55rem);bottom:0;width:190px;padding:.55rem .7rem;border:1px solid var(--color-accent-primary-soft);background:rgba(5,7,10,.95);color:var(--color-text-secondary);font:var(--text-xs)/1.4 var(--font-mono);text-align:left}
 @keyframes robotCompanionBounce{50%{transform:translateY(-9px)}}
-@media(max-width:640px){.robot-bubble{right:50%;top:calc(100% + 1rem);transform:translate(50%,5px)}.robot-bubble.is-visible{transform:translate(50%,0)}.robot-companion{display:none}}
+@media(max-width:640px){.robot-bubble{right:50%;top:auto;bottom:calc(100% + .75rem);width:min(210px,calc(100vw - 2rem));max-width:none;transform:translate(50%,5px)}.robot-bubble.is-visible{transform:translate(50%,0)}.robot-companion{display:none}}
 @media(prefers-reduced-motion:reduce){.robot-bubble,.robot-companion{transition:none}.robot-companion{display:none}}
 html[data-effects="off"] .robot-companion{display:none!important}

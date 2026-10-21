@@ -53,7 +53,7 @@
       #hero{padding:0 1rem;padding-top:4rem;display:flex;flex-direction:column;align-items:center;justify-content:center}
       .hc{width:100%;max-width:100%;text-align:center}
       .hero-terminal{justify-content:center;text-align:center;font-size:clamp(.64rem,2.8vw,.82rem);gap:.4rem;margin-bottom:4rem}
-      .hero-portrait{width:clamp(140px,38vw,200px);margin-top:1.75rem}
+      .hero-portrait{width:clamp(128px,34vw,176px);margin-top:1.25rem}
       .inner{padding:3rem 1rem}
       .sgrid{gap:1.5rem}
       .avbox{max-width:180px}
@@ -97,7 +97,7 @@
       .btnp,.btng{width:100%;padding:.7rem 1.2rem;font-size:.75rem;justify-content:center}
       #hero{padding:0 0.8rem;padding-top:4rem;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;min-height:100svh}
       .hc{width:100%;max-width:100%;text-align:center}
-      .hero-portrait{width:clamp(132px,42vw,180px);margin-top:1.5rem}
+      .hero-portrait{width:clamp(120px,36vw,158px);margin-top:3.25rem}
       .inner{padding:2.5rem 0.8rem}
       .sgrid{gap:1.2rem}
       .avbox{max-width:150px;border-radius:20px}
@@ -155,7 +155,7 @@
       .btnp,.btng{width:100%;padding:.65rem 1rem;font-size:.75rem;justify-content:center}
       #hero{display:flex;flex-direction:column;align-items:center;justify-content:center}
       .hc{width:100%;text-align:center}
-      .hero-portrait{width:clamp(124px,44vw,160px);margin-top:1.25rem}
+      .hero-portrait{width:clamp(112px,37vw,138px);margin-top:3.25rem}
       .inner{padding:2rem 0.6rem}
       .avbox{max-width:120px}
       .stit{font-size:1rem;margin-bottom:1rem;text-align:center}
